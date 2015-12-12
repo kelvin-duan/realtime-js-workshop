@@ -16,25 +16,20 @@ var x = 30;
 var y = 100;
 var flag = true;
 
-function goRight(){
-	x += 2;
-	
-}
-
-function goLeft(){
-	x -= 2;
-	if (x <= w + 15 )
-		flag = true;
-}
-
 function animate(){
 	ctx.fillStyle = 'White';
 	ctx.fillRect(0, 0, w, h);
-	if (x >= h - 15)
+	if (x >= w - 30){
 		flag = false;
-	goRight();
-	goLeft();
-	drawCircle(x, y, color);
+	}
+	if (x < 30 ){
+		flag = true;
+	}	
+	if (flag == true)
+		x += 2;
+	else
+		x -= 2;
+	drawCircle(x, y, "Green");
 	requestAnimationFrame(animate);
 }
 
